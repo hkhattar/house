@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+	{%load staticfiles%}
+	
+	<link rel="stylesheet" href="{%static 'house/css/style.css'%}" media="all">
+
+      
+      
+      <style>
+		
+	</style>
+</head>
+<body>
+
+
+<div class="container">
+	<div class="header">
+		<h1>BuyA<span style="color:crimson">House</span></h1>
+		<div class="nav">
+			<a name= "backtotop" href="">Home</a>
+			<a href="#AboutUs">About Us</a>
+			<a href="#ContactUs">Contact Us</a>
+			
+		</div>
+		<div class="login">
+			<a class="contact" href="/login_reg">Login</a>
+			<a class="contact" href="/login_reg">Registration</a>
+		</div>
+	</div>
+	<hr>
+	<div class="main_content">
+	<img src="{% static 'house/images/house.jpg' %}" width="820px">
+	<!-- <img src="house.jpg" alt="house" width="820px" > -->
+		
+	</div>
+
+	<div>
+		<a name="AboutUs" class="contact"></a>
+		<a href="#backtotop" class="contact" id="back1">back to top &uarr;</a>
+				<h2 name="AboutUs">About Us</h2>
+		<p>Our app provides current information about single- and multi-family homes and farms and ranches for sale by the U.S. Federal Government. These previously owned properties are for sale by public auction or other method depending on the property. Anyone can buy a home for sale by the U.S. Government, but you must work with a real estate agent, broker, or servicing representative to submit an offer or bid. </p>
+	</div>
+
+
+	<div>
+		<a name="ContactUs" class="contact"></a>
+		<a href="#backtotop" class="contact" id="back2">back to top &uarr;</a>
+		<h2 name="ContactUs">Contact Us</h2>
+		<address>
+			<p>Phone: (425) 223-5584</p>
+			<p>Email: buyahouse@gmail.com</p>
+			<p>Address: 1920 Zanker Rd #20, San Jose, CA 95112</p>
+			
+		</address>
+		
+		<div id="googleMap1" style="width:100%;height:300px;"></div>
+		<br>
+		<div id="googleMap2" style="width:100%;height:300px;"></div>
+		
+	</div>
+	
+	<div class="footer">
+	<hr>
+	BuyAHouse / buyahouse@gmail.com / © 2016 BuyAHouse. Proudly created by buyAHouse team
+	<a href="#backtotop" class="contact" id="back3">back to top &uarr;</a>
+		
+	</div>
+</div> <!--end of container -->
+
+<script>
+function myMap() {
+  var mapOptions1 = {
+    center: new google.maps.LatLng(37.3754,-121.9102),
+    zoom:18,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var mapOptions2 = {
+    center: new google.maps.LatLng(37.3754,-121.9102),
+    zoom:18,
+    mapTypeId: google.maps.MapTypeId.SATELLITE
+  };
+  
+  var map1 = new google.maps.Map(document.getElementById("googleMap1"),mapOptions1);
+  var map2 = new google.maps.Map(document.getElementById("googleMap2"),mapOptions2);
+  
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+</body>
+</html>

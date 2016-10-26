@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login & Reg | Home</title>
+	{% include './header.html' %}
+	{%load staticfiles%}
+	<link rel="stylesheet" href="{%static 'house/css/bootstrap.min.css'%}" media="all">
+	<link rel="stylesheet" href="{%static 'house/css/style.css'%}" media="all">
+	<link rel="stylesheet" href="{% static 'house/static/house/images' %}" media="screen" title="no title"  charset="utf-8">
+
+</head>
+<body>
+
+	<div class="container" id="box1">
+	<h1>BuyA<span style="color:crimson">House</span></h1>
+	<div class="nav">
+			<a href="/">Home</a>
+			<a href="/">About Us</a>
+			<a href="/">Contact Us</a>
+			
+		</div>
+	<hr>
+	
+		<div class="row" id="box2">
+		<div class="center-block">
+				<div class="well span6 offset2" id="box3">
+				<h1>Sign Up</h1>
+				<form action="{%url 'house:register'%}" method='post' class="form-stacked">
+					{%csrf_token%}
+					<div class="style">
+						<label for="first">First Name</label>
+						<input type="text" id="first" name="first" class="form-control">
+					</div>
+					<div class="style">
+						<label for="last">Last Name</label>
+						<input type="text" id="last" name="last" class="form-control">
+					</div>
+					<div class="style">
+						<label for="username">Username</label>
+						<input type="text" id="username" name="username" class="form-control">
+					</div>
+					<div class="style">
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email"  class="form-control">
+					</div>
+					<div class="style">
+						<label for="pin">Password</label>
+						<input type="password" id="pin" name="pin" class="form-control">
+					</div>
+					<div class="style">
+						<label for="confirm">Confirm pw</label>
+						<input type="password" id="confirm" name="confirm" class="form-control">
+					</div>
+					<input type="submit" value="Register" class="btn btn-success">
+				</form>
+
+			</div>
+
+		</div>
+
+			
+		</div>
+		<div class="row" id="box4">
+		<div class="center-block">
+			<div class="well span6 offset2" id="box5">
+				<h1>Sign In</h1>
+				<form action="{%url 'house:login'%}" method="post">
+					{%csrf_token%}
+					<div class="style">
+						<label for="username_login">Username</label>
+						<input type="text" id="username_login" name="username_login" class="form-control">
+					</div>
+					<div class="style">
+						<label for="pin_login">Password</label>
+						<input id="pin_login" type="password" name="pin_login" class="form-control">
+					</div>
+					<input type="submit" value="Login" class="btn btn-success">
+				</form>
+
+			</div>
+			<button onclick="myFacebookLogin()" class="facebook">
+						<img src="{% static 'house/images/fb.png' %}" width="30px">
+			Login with Facebook
+			</button>
+			</div>
+			<div class="footer">
+	<hr>
+	BuyAHouse / buyahouse@gmail.com / © 2016 BuyAHouse. Proudly created by buyAHouse team
+	<!-- <a href="#backtotop" class="contact" id="back3">back to top &uarr;</a> -->
+		
+	</div>
+			<!--flash some errors on the right side-->	
+			{%if messages%}
+			<div class="col-lg-5">
+			{%for message in messages%}
+				<p class="error">error: {{message}}</p>
+			{%endfor%}
+			</div>
+			{%endif%}
+	
+
+
+		</div>
+	
+	</div>
+
+
+	<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1689979144663616',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>
+// Only works after `FB.init` is called
+function myFacebookLogin() {
+  FB.login(function(){}, {scope: 'publish_actions'});
+}
+</script>
+
+</body>
+</html>
