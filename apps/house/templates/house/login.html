@@ -25,6 +25,24 @@
 	
 	
 	
+		<div class="row" id="box4">
+		<div class="center-block">
+			<div class="well span6 offset2" id="box5">
+				<h1>Log In</h1>
+				<form action="{%url 'house:login'%}" method="post">
+					{%csrf_token%}
+					<div class="style">
+						<label for="username_login">Username</label>
+						<input type="text" id="username_login" name="username_login" class="form-control">
+					</div>
+					<div class="style">
+						<label for="pin_login">Password</label>
+						<input id="pin_login" type="password" name="pin_login" class="form-control">
+					</div>
+					<input type="submit" value="Login" class="btn btn-success">
+				</form>
+
+			</div>
 		<div class="row" id="box2">
 		<div class="center-block">
 				<div class="well span6 offset2" id="box3">
@@ -64,24 +82,6 @@
 
 			
 		</div>
-		<div class="row" id="box4">
-		<div class="center-block">
-			<div class="well span6 offset2" id="box5">
-				<h1>Sign In</h1>
-				<form action="{%url 'house:login'%}" method="post">
-					{%csrf_token%}
-					<div class="style">
-						<label for="username_login">Username</label>
-						<input type="text" id="username_login" name="username_login" class="form-control">
-					</div>
-					<div class="style">
-						<label for="pin_login">Password</label>
-						<input id="pin_login" type="password" name="pin_login" class="form-control">
-					</div>
-					<input type="submit" value="Login" class="btn btn-success">
-				</form>
-
-			</div>
 			<button onclick="myFacebookLogin()" class="facebook">
 						<img src="{% static 'house/images/fb.png' %}" width="30px">
 			Login with Facebook
