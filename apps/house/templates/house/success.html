@@ -109,26 +109,23 @@
 	  
 	  var map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
 
+google.maps.event.addListener(map, "bounds_changed",function(){
+	  		var bounds = map.getBounds();
+	  		var NE = bounds.getNorthEast();
+	  		var SW = bounds.getSouthWest();
+	  		var strHTML = "North East" + NE.lat() + "," +NE.lng()+ "</br>"
+	  		strHTML += "South West: " + SW.lat() + "," + SW.lng();
+	  		document.getElementById("info").innerHTML = strHTML;
+	  })
+	  
 
-	  // google.maps.event.addListener(map, "bounds_changed",function(){
-	  // 		var bounds = map.getBounds();
-	  // 		var NE = bounds.getNorthEast();
-	  // 		var SW = bounds.getSouthWest();
-	  // 		var strHTML = "North East" + NE.lat() + "," +NE.lng()+ "</br>"
-	  // 		strHTML += "South West: " + SW.lat() + "," + SW.lng();
-	  // 		document.getElementById("info").innerHTML = strHTML;
-
-	  // })
-
-
-	  // var locations = [];
-	  // locations.push({name:"Las Vegas",latlng:new google.maps.Latlng(36.255123,-115.2383485)});
-	  // locations.push({name:"California",latlng:new google.maps.Latlng(36.778261,-119.4179324)});
-	  // locations.push({name:"Newyork",latlng:new google.maps.Latlng(40.7143528,-74.0059)});
-
-	  // for(var i=0; i<locations.length;i++){
-	  // 	var marker2 = new google.maps.Marker({position: location[i].latlng,map:map,title:locations[i].name});
-	  // }
+	  var locations = [
+      ['Bondi Beach', -33.890542, 151.274856, 4],
+      ['Coogee Beach', -33.923036, 151.259052, 5],
+      ['Cronulla Beach', -34.028249, 151.157507, 3],
+      ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+      ['Maroubra Beach', -33.950198, 151.259302, 1]
+    ];
 
 	  var acOptions = {
   		types: ['geocode']
@@ -141,6 +138,24 @@
 	  map: map,
 	  title: 'Newyork'
 	  });
+
+	 	 var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+
+
 
 		var infoWindowOptions = {
     	content: 'This could be your new house'
