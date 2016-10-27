@@ -96,6 +96,25 @@ a:active
 	font-weight:bold;
 	color:green;
 }
+
+.logout
+{
+	background-color: rgba(0,0,0,0.6);
+	display: inline-block;
+	float:right;
+	/*margin-left:600px;*/
+	font-size:18px;
+	font-weight:bold;
+	color:green;
+	padding:0px;
+
+
+}
+
+.logout a
+{
+	padding:0;
+}
 	.login a{
 		padding: 10px;
 	}

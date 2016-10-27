@@ -14,67 +14,92 @@
 	{{msg.tags}} {{msg}}
 	{%endfor%}
 	{%endif%}
-	<h1>Welcome</h1>
-	<h2>Find your home</h2>
-	<form >
-		<input type="text" name="search" placeholder="Enter your city..">
-		<input type="submit" name="submit" value="Find">
-	</form>
-	<div  class= "coverage" id="googleMap1" style="width:80%;height:300px;"></div>
+	<div class="container">
+		<div class="header">
+			<h1>BuyA<span style="color:tomato">House</span></h1>
+			<!-- <div class="nav">
+				<a name= "backtotop" href="">Home</a>
+				<a href="#AboutUs">About Us</a>
+				<a href="#ContactUs">Contact Us</a>
+				
+			</div> -->
+			<div class="logout">
+				<a class="contact" href="/">Logout</a>
+			</div>
+			
+		</div><!--end of div header-->
+		<hr>
+		<div class="main_content">
+			<h1>Welcome</h1>
+			<h2>Find your home</h2>
+			<form >
+				<input type="text" name="search" placeholder="Enter your city..">
+				<input type="submit" name="submit" value="Find">
+			</form>
+			<div  class= "coverage" id="googleMap1" style="width:80%;height:300px;"></div>
 
-	<h2>Browse Homes</h2>
+			<h2>Browse Homes</h2>
+			
+			<a class="contact" href="">Alabama</a>
+			<a class="contact" href="">Alaska</a>
+			<a class="contact" href="">Arizona</a>
+			<a class="contact" href="">Arkansas</a>
+			<a class="contact" href="">California</a>
+			<a class="contact" href="">Colorado</a>
+			<a class="contact" href="">Connecticut</a>
+			<a class="contact" href="">Delaware</a>
+			<a class="contact" href="">Florida</a>
+			<a class="contact" href="">Georgia</a>
+			<a class="contact" href="">Hawaii</a>
+			<a class="contact" href="">Idaho</a>
+			<a class="contact" href="">Illinois</a>
+			<a class="contact" href="">Indiana</a>
+			<a class="contact" href="">Iowa</a>
+			<a class="contact" href="">Kansas</a>
+			<a class="contact" href="">Kentucky</a>
+			<a class="contact" href="">Louisiana</a>
+			<a class="contact" href="">Maine</a>
+			<a class="contact" href="">Maryland</a>
+			<a class="contact" href="">Massachusetts</a>
+			<a class="contact" href="">Michigan</a>
+			<a class="contact" href="">Minnesota</a>
+			<a class="contact" href="">Mississippi</a>
+			<a class="contact" href="">Missouri</a>
+			<a class="contact" href="">Montana</a>
+			<a class="contact" href="">Nebraska</a>
+			<a class="contact" href="">Nevada</a>
+			<a class="contact" href="">New Hampshire</a>
+			<a class="contact" href="">New Jersey</a>
+			<a class="contact" href="">New Mexico</a>
+			<a class="contact" href="">New York</a>
+			<a class="contact" href="">North Carolina</a>
+			<a class="contact" href="">North Dakota</a>
+			<a class="contact" href="">Ohio</a>
+			<a class="contact" href="">Oklahoma</a>
+			<a class="contact" href="">Oregon</a>
+			<a class="contact" href="">Pennsylvania</a>
+			<a class="contact" href="">Rhode Island</a>
+			<a class="contact" href="">South Carolina</a>
+			<a class="contact" href="">South Dakota</a>
+			<a class="contact" href="">Tennessee</a>
+			<a class="contact" href="">Texas</a>
+			<a class="contact" href="">Utah</a>
+			<a class="contact" href="">Vermont</a>
+			<a class="contact" href="">Virginia</a>
+			<a class="contact" href="">Washington</a>
+			<a class="contact" href="">West Virginia</a>
+			<a class="contact" href="">Wisconsin</a>
+			<a class="contact" href="">Wyoming</a>
+
+					
+		</div><!--end of div main content-->
+		<div class="footer">
+			<hr>
+			BuyAHouse / buyahouse@gmail.com / © 2016 BuyAHouse. Proudly created by buyAHouse team
+		</div> <!--end of div footer-->
+		
+	</div> <!--end of div container-->
 	
-	<a class="contact" href="">Alabama</a>
-	<a class="contact" href="">Alaska</a>
-	<a class="contact" href="">Arizona</a>
-	<a class="contact" href="">Arkansas</a>
-	<a class="contact" href="">California</a>
-	<a class="contact" href="">Colorado</a>
-	<a class="contact" href="">Connecticut</a>
-	<a class="contact" href="">Delaware</a>
-	<a class="contact" href="">Florida</a>
-	<a class="contact" href="">Georgia</a>
-	<a class="contact" href="">Hawaii</a>
-	<a class="contact" href="">Idaho</a>
-	<a class="contact" href="">Illinois</a>
-	<a class="contact" href="">Indiana</a>
-	<a class="contact" href="">Iowa</a>
-	<a class="contact" href="">Kansas</a>
-	<a class="contact" href="">Kentucky</a>
-	<a class="contact" href="">Louisiana</a>
-	<a class="contact" href="">Maine</a>
-	<a class="contact" href="">Maryland</a>
-	<a class="contact" href="">Massachusetts</a>
-	<a class="contact" href="">Michigan</a>
-	<a class="contact" href="">Minnesota</a>
-	<a class="contact" href="">Mississippi</a>
-	<a class="contact" href="">Missouri</a>
-	<a class="contact" href="">Montana</a>
-	<a class="contact" href="">Nebraska</a>
-	<a class="contact" href="">Nevada</a>
-	<a class="contact" href="">New Hampshire</a>
-	<a class="contact" href="">New Jersey</a>
-	<a class="contact" href="">New Mexico</a>
-	<a class="contact" href="">New York</a>
-	<a class="contact" href="">North Carolina</a>
-	<a class="contact" href="">North Dakota</a>
-	<a class="contact" href="">Ohio</a>
-	<a class="contact" href="">Oklahoma</a>
-	<a class="contact" href="">Oregon</a>
-	<a class="contact" href="">Pennsylvania</a>
-	<a class="contact" href="">Rhode Island</a>
-	<a class="contact" href="">South Carolina</a>
-	<a class="contact" href="">South Dakota</a>
-	<a class="contact" href="">Tennessee</a>
-	<a class="contact" href="">Texas</a>
-	<a class="contact" href="">Utah</a>
-	<a class="contact" href="">Vermont</a>
-	<a class="contact" href="">Virginia</a>
-	<a class="contact" href="">Washington</a>
-	<a class="contact" href="">West Virginia</a>
-	<a class="contact" href="">Wisconsin</a>
-	<a class="contact" href="">Wyoming</a>
-
 
 		
 	<script>
