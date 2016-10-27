@@ -4,6 +4,58 @@ from .models import User , UserManager
 from django.contrib import messages
 # Create your views her e.
 import bcrypt
+statedict={
+' LABAMA': 'AL',
+'ALASKA': 'AK',
+'ARIZONA': 'AZ',
+'ARKANSAS': 'AR',
+'CALIFORNIA': 'CA',
+'COLORADO': 'CO',
+'CONNECTICUT': 'CT',
+'DELAWARE': 'DE',
+'FLORIDA': 'FL',
+'GEORGIA': 'GA',
+'HAWAII': 'HI',
+'IDAHO': 'ID',
+'ILLINOIS': 'IL',
+'INDIANA':'IN',
+'IOWA': 'IA',
+'KANSAS': 'KS',
+'KENTUCKY': 'KY',
+'LOUISIANA': 'LA',
+'MAINE': 'ME',
+'MARYLAND': 'MD',
+'MASSACHUSETTS': 'MA',
+'MICHIGAN': 'MI',
+'MINNESOTA': 'MN',
+'MISSISSIPPI': 'MS',
+'MISSOURI': 'MO',
+'MONTANA': 'MT',
+'NEBRASKA': 'NE',
+'NEVADA': 'NV',
+'NEW HAMPSHIRE': 'NH',
+'NEW JERSEY': 'NJ',
+'NEW MEXICO': 'NM',
+'NEW YORK': 'NY',
+'NORTH CAROLINA': 'NC',
+'NORTH DAKOTA': 'ND',
+'OHIO': 'OH',
+'OKLAHOMA': 'OK',
+'OREGON': 'OR',
+'PENNSYLVANIA': 'PA',
+'RHODE ISLAND': 'RI',
+'SOUTH CAROLINA', 'SC',
+'SOUTH DAKOTA': 'SD',
+'TENNESSEE': 'TN',
+'TEXAS': 'TX',
+'UTAH': 'UT',
+'VERMONT': 'VT',
+'VIRGINIA': 'VA',
+'WASHINGTON': 'WA',
+'WEST VIRGINIA': 'WV',
+'WISCONSIN': 'WI',
+'WYOMING': 'WY',
+        }
 
 def index(request):
     query="select id, X from Public_Housing_Authorities where STD_ST = 'WI';"
@@ -50,5 +102,9 @@ def login(request):
 
 def search(request):
     if request.method=="POST":
-        city=request.POST['search']
-        
+        state=request.POST['search']
+        query='select X, Y, FORMAL_PARTICIPANT_NAME, STD_ADDR, STD_CITY, STD_ZIP5 from Public_Housing_Authorities where STD_ST = {};'.format(state)
+	data=ph.objects.raw(query)
+	context={'data':data}
+	return render(request,'house/success.html',context)
+
