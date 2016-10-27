@@ -81,7 +81,17 @@ function myMap() {
   };
   
   var map1 = new google.maps.Map(document.getElementById("googleMap1"),mapOptions1);
+  var marker = new google.maps.Marker({
+	  position: new google.maps.LatLng(37.3754,-121.9102),
+	  map: map1,
+	  title: 'Dojo'
+	  });
   var map2 = new google.maps.Map(document.getElementById("googleMap2"),mapOptions2);
+  var marker = new google.maps.Marker({
+	  position: new google.maps.LatLng(37.3754,-121.9102),
+	  map: map2,
+	  title: 'Dojo'
+	  });
   
 }
 </script>
