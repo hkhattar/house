@@ -17,12 +17,8 @@
 	<div class="container">
 		<div class="header">
 			<h1>BuyA<span style="color:tomato">House</span></h1>
-			<!-- <div class="nav">
-				<a name= "backtotop" href="">Home</a>
-				<a href="#AboutUs">About Us</a>
-				<a href="#ContactUs">Contact Us</a>
 				
-			</div> -->
+			
 			<div class="logout">
 				<a class="contact" href="/">Logout</a>
 			</div>
@@ -37,7 +33,7 @@
 				<input type="submit" name="submit" value="Find">
 			</form>
 			<div  class= "coverage" id="googleMap" style="width:80%;height:300px;"></div>
-
+			<div id="info"></div>
 			<h2>Browse Homes</h2>
 			
 			<a class="contact" href="">Alabama</a>
@@ -112,6 +108,28 @@
 	  
 	  
 	  var map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+
+	  // google.maps.event.addListener(map, "bounds_changed",function(){
+	  // 		var bounds = map.getBounds();
+	  // 		var NE = bounds.getNorthEast();
+	  // 		var SW = bounds.getSouthWest();
+	  // 		var strHTML = "North East" + NE.lat() + "," +NE.lng()+ "</br>"
+	  // 		strHTML += "South West: " + SW.lat() + "," + SW.lng();
+	  // 		document.getElementById("info").innerHTML = strHTML;
+
+	  // })
+
+
+	  // var locations = [];
+	  // locations.push({name:"Las Vegas",latlng:new google.maps.Latlng(36.255123,-115.2383485)});
+	  // locations.push({name:"California",latlng:new google.maps.Latlng(36.778261,-119.4179324)});
+	  // locations.push({name:"Newyork",latlng:new google.maps.Latlng(40.7143528,-74.0059)});
+
+	  // for(var i=0; i<locations.length;i++){
+	  // 	var marker2 = new google.maps.Marker({position: location[i].latlng,map:map,title:locations[i].name});
+	  // }
+
 	  var acOptions = {
   		types: ['geocode']
 		};
@@ -122,9 +140,6 @@
 	  position: new google.maps.LatLng(40.7128,-74.0059),
 	  map: map,
 	  title: 'Newyork'
-	  
-
-	
 	  });
 
 		var infoWindowOptions = {
