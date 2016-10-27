@@ -25,13 +25,10 @@
 	
 	
 	
-		<div class="row" id="box2">
-		<div class="center-block">
-				<div class="well span6 offset2" id="box3">
 		<div class="row" id="box4">
 		<div class="center-block">
 			<div class="well span6 offset2" id="box5">
-				<h1>Sign In</h1>
+				<h1>Log In</h1>
 				<form action="{%url 'house:login'%}" method="post">
 					{%csrf_token%}
 					<div class="style">
@@ -46,6 +43,9 @@
 				</form>
 
 			</div>
+		<div class="row" id="box2">
+		<div class="center-block">
+				<div class="well span6 offset2" id="box3">
 				<h1>Sign Up</h1>
 				<form action="{%url 'house:register'%}" method='post' class="form-stacked">
 					{%csrf_token%}
