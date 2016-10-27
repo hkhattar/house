@@ -12,6 +12,7 @@ import bcrypt
 
 
 from django.db import models
+
 email_reg=re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 name_reg=re.compile(r'^[A-Za-z]{2,}$')
 pin_reg=re.compile(r'^.{8,}$')

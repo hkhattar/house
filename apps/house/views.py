@@ -1,4 +1,4 @@
-
+from .models import PublicHousingAuthorities as ph
 from django.shortcuts import render,redirect,reverse
 from .models import User , UserManager
 from django.contrib import messages
@@ -6,10 +6,14 @@ from django.contrib import messages
 import bcrypt
 
 def index(request):
-	return render(request,"house/index.html")
+    query="select id, X from Public_Housing_Authorities where STD_ST = 'WI';"
+    allnames=[f.name for f in ph._meta.get_fields()]
+    data=ph.objects.raw(query)
+    print(data[0].x)
+    return render(request,"house/index.html")
 
 def login_reg(request):
-	return render(request,"house/login.html")
+    return render(request,"house/login.html")
 
 def registration(request):
     if request.method=="POST":
@@ -44,4 +48,7 @@ def login(request):
             messages.error(request,"user not exist")
         return redirect(reverse('house:login_reg'))
 
-
+def search(request):
+    if request.method=="POST":
+        city=request.POST['search']
+        
