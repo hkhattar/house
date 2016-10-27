@@ -33,10 +33,10 @@
 			<h1>Welcome</h1>
 			<h2>Find your home</h2>
 			<form >
-				<input type="text" name="search" placeholder="Enter your city..">
+				<input type="text" name="search" placeholder="Enter your city.." id="autocomplete">
 				<input type="submit" name="submit" value="Find">
 			</form>
-			<div  class= "coverage" id="googleMap1" style="width:80%;height:300px;"></div>
+			<div  class= "coverage" id="googleMap" style="width:80%;height:300px;"></div>
 
 			<h2>Browse Homes</h2>
 			
@@ -104,24 +104,62 @@
 		
 	<script>
 		function myMap() {
-	  var mapOptions1 = {
+	  var mapOptions = {
 	    center: new google.maps.LatLng(40.7128,-74.0059),
 	    zoom:9,
 	    mapTypeId: google.maps.MapTypeId.ROADMAP
 	  };
 	  
 	  
-	  var map1 = new google.maps.Map(document.getElementById("googleMap1"),mapOptions1);
+	  var map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+	  var acOptions = {
+  		types: ['geocode']
+		};
+		var autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'),acOptions);
+		autocomplete.bindTo('bounds',map);
+
 		var marker = new google.maps.Marker({
 	  position: new google.maps.LatLng(40.7128,-74.0059),
-	  map: map1,
+	  map: map,
 	  title: 'Newyork'
+	  
+
+	
 	  });
+
+		var infoWindowOptions = {
+    	content: 'This could be your new house'
+		};
+
+		var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+		google.maps.event.addListener(marker,'click',function(e){
+  
+  		infoWindow.open(map, marker);
+  		});
+
+  		google.maps.event.addListener(autocomplete, 'place_changed', function() {
+  		infoWindow.close();
+		  var place = autocomplete.getPlace();
+		  if (place.geometry.viewport) {
+		    map.fitBounds(place.geometry.viewport);
+		  } else {
+		    map.setCenter(place.geometry.location);
+		    map.setZoom(17);
+		  }
+		  marker.setPosition(place.geometry.location);
+		  infoWindow.setContent('<div><strong>' + place.name + '</strong><br>');
+		  infoWindow.open(map, marker);
+		  google.maps.event.addListener(marker,'click',function(e){
+
+		    infoWindow.open(map, marker);
+
+		  });
+});
 	  
 	  
 	}
 	</script>
 
-<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap&libraries=places"></script>
 </body>
 </html>
