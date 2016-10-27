@@ -28,8 +28,6 @@ def registration(request):
         else:
             hashed=bcrypt.hashpw(pin.encode(),bcrypt.gensalt())
             user=User.objects.create(first_name=first,last_name=last,username=username,email=email,password=hashed)
-            print(user.username)
-            messages.success(request,"Successfully registered!")
         return render(request,'house/success.html')
  
 def login(request):
@@ -38,9 +36,12 @@ def login(request):
         login_pin=request.POST['pin_login']
         if User.objects.isExist(login_username):
             if User.objects.login_valid(login_username,login_pin):
+
                 return render(request,'house/success.html')
             else:
                 messages.error(request,"login unsuccessful")
         else:
             messages.error(request,"user not exist")
         return redirect(reverse('house:login_reg'))
+
+
