@@ -35,12 +35,21 @@ hr{
 
 h1	
 {
+	font-size: 35px;
 	color:limegreen;
+	text-decoration: underline;
 }
 
 .nav
 {
 	display:inline-block;
+}
+
+.infoBG{
+	margin-bottom: 10px;
+	background-color: rgba(0, 0, 0, 0.6);
+	border-radius: 10px;
+	padding: 10px;
 }
 
 a:not(.contact)
@@ -58,13 +67,10 @@ a:link
 {
 	color:green;
 }
-a:visited:not(.contact)
-{
-	color:white;
-}
 
 a:hover
 {
+	font-weight: bold;
 	color:pink;
 }
 
@@ -82,15 +88,18 @@ a:active
 
 }
 
-.login
-{
+.login{
+	background-color: rgba(0,0,0,0.6);
 	display: inline-block;
 	margin-left:300px;
 	font-size:18px;
 	font-weight:bold;
 	color:green;
-
 }
+	.login a{
+		padding: 10px;
+	}
+
 .btn{
 	margin-left:0px;
 	margin-top:10px;
