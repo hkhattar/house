@@ -104,7 +104,7 @@ def login(request):
 def display(request):
     if request.method=="POST":
         state=request.POST['search']
-        query='select X, Y, FORMAL_PARTICIPANT_NAME, STD_ADDR, STD_CITY, STD_ZIP5 from Public_Housing_Authorities where STD_ST = {};'.format(state)
+        query='select X, Y, FORMAL_PARTICIPANT_NAME, STD_ADDR, STD_CITY, STD_ZIP5 from Public_Housing_Authorities where STD_ST = {};'.format(statedic[state])
 	data=ph.objects.raw(query)
 	context={'data':data}
     else:
