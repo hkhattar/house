@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'house',
         'USER': 'root',
         'PASSWORD':'root',
-        'HOST': "/Applications/MAMP/tmp/mysql/mysql.sock",
+        'HOST': "localhost",
         'PORT':'3306',
     }
 }

@@ -44,7 +44,7 @@ statedict={
 'OREGON': 'OR',
 'PENNSYLVANIA': 'PA',
 'RHODE ISLAND': 'RI',
-'SOUTH CAROLINA', 'SC',
+'SOUTH CAROLINA': 'SC',
 'SOUTH DAKOTA': 'SD',
 'TENNESSEE': 'TN',
 'TEXAS': 'TX',
@@ -84,7 +84,7 @@ def registration(request):
         else:
             hashed=bcrypt.hashpw(pin.encode(),bcrypt.gensalt())
             user=User.objects.create(first_name=first,last_name=last,username=username,email=email,password=hashed)
-        return render(request,'house/success.html')
+        return redirect(reverse('house:display'))
  
 def login(request):
     if request.method=="POST":
@@ -93,18 +93,20 @@ def login(request):
         if User.objects.isExist(login_username):
             if User.objects.login_valid(login_username,login_pin):
 
-                return render(request,'house/success.html')
+                return redirect(reverse('house:display'))
             else:
                 messages.error(request,"login unsuccessful")
         else:
             messages.error(request,"user not exist")
         return redirect(reverse('house:login_reg'))
 
-def search(request):
+def display(request):
     if request.method=="POST":
         state=request.POST['search']
         query='select X, Y, FORMAL_PARTICIPANT_NAME, STD_ADDR, STD_CITY, STD_ZIP5 from Public_Housing_Authorities where STD_ST = {};'.format(state)
 	data=ph.objects.raw(query)
 	context={'data':data}
-	return render(request,'house/success.html',context)
+    else:
+        context={}
+    return render(request,'house/success.html',context)
 
