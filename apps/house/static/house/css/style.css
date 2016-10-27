@@ -2,9 +2,14 @@ body
 {
 	margin:0px;
 	padding:0px;
+	/*background:url(dg.jpg);*/
+	background-image: url("/static/house/images/bg.jpg");
 
 }
-
+/**
+{
+	background-image: url("images/background.jpg")
+}*/
 
 
 .container
@@ -30,7 +35,7 @@ hr{
 
 h1	
 {
-	color:green;
+	color:limegreen;
 }
 
 .nav
@@ -42,7 +47,7 @@ a:not(.contact)
 {
 	color: white;
 	text-decoration:none;
-	border:solid white 1px;
+	border:solid transparent 1px;
 	padding:5px;
 	padding-right: 20px;
 	padding-left:20px;
@@ -73,6 +78,7 @@ a:active
 	color:black;
 	text-decoration: none;
 	padding-right:20px;
+	color:yellow;
 
 }
 
@@ -123,7 +129,8 @@ a:active
 
 h2
 {
-	color:#616D7E;
+	/*color:#616D7E;*/
+	color:yellowgreen;
 }
 
 .footer
@@ -137,10 +144,27 @@ h2
 	font-family: arial, helvetica;
 	font-weight: bold ;
 	font-size: 11px;
+	color:white;
 	/*background-color: black;*/
 }
 
 .facebook
 {
 	color:blue;
+}
+
+p
+{
+	color:white;
+}
+
+.input[type=text] {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.coverage
+{
+	margin:40px;
 }
