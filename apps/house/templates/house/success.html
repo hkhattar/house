@@ -65,7 +65,13 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4vTHBephMsPZygX3N8FGMsaAAlx-GiJE&callback=initMap">
     </script>
-	
+	{%for house in location%}
+	<div>
+		<h2>{{house.formal_participant_name}}</h2>
+		<h4>Housing program type: {{house.ha_program_type}}</h4>
+		<p>{{house.std_addr}},{{house.std_city}},{{house.std_zip5}}</p>
+	</div>
+	{%endfor%}
 
 	</body>
 </html>
