@@ -104,9 +104,11 @@ def login(request):
 def display(request):
     if request.method=="POST":
         state=request.POST['search']
-        query='select X, Y, FORMAL_PARTICIPANT_NAME, STD_ADDR, STD_CITY, STD_ZIP5 from Public_Housing_Authorities where STD_ST = {};'.format(statedic[state])
-	data=ph.objects.raw(query)
-	context={'data':data}
+        query="select id, X, Y, FORMAL_PARTICIPANT_NAME, STD_ADDR, STD_CITY, STD_ZIP5 from Public_Housing_Authorities where STD_ST = '{}';".format(statedict[state])
+        data=ph.objects.raw(query)[:10]
+        first=data[0]
+        context={'location':data,'first1':first}
+        
     else:
         context={}
     return render(request,'house/success.html',context)

@@ -4,16 +4,16 @@
 	<meta charset="UTF-8">
 	<title>Login and Reg | Succcess</title>
 	{%load staticfiles%}
-	
 	<link rel="stylesheet" href="{%static 'house/css/style.css'%}" media="all">
-
+   <style>
+	#map{
+	height:400px;
+	width:100%;
+}
+			
+</style>
 </head>
 <body>
-	{%if messages%}
-	{%for msg in messages%}
-	{{msg.tags}} {{msg}}
-	{%endfor%}
-	{%endif%}
 	<div class="container">
 		<div class="header">
 			<h1>BuyA<span style="color:tomato">House</span></h1>
@@ -28,168 +28,44 @@
 		<div class="main_content">
 			<h1>Welcome</h1>
 			<h2>Find your home</h2>
-			<form >
+			<form action={%url 'house:display'%} method='post'>
+				{%csrf_token%}
 				<input type="text" name="search" placeholder="Enter your city.." id="autocomplete">
 				<input type="submit" name="submit" value="Find">
 			</form>
-			<div  class= "coverage" id="googleMap" style="width:80%;height:300px;"></div>
 			<div id="info"></div>
 			<h2>Browse Homes</h2>
 			
 			<a class="contact" href="">Alabama</a>
 			<a class="contact" href="">Alaska</a>
-			<a class="contact" href="">Arizona</a>
-			<a class="contact" href="">Arkansas</a>
-			<a class="contact" href="">California</a>
-			<a class="contact" href="">Colorado</a>
-			<a class="contact" href="">Connecticut</a>
-			<a class="contact" href="">Delaware</a>
-			<a class="contact" href="">Florida</a>
-			<a class="contact" href="">Georgia</a>
-			<a class="contact" href="">Hawaii</a>
-			<a class="contact" href="">Idaho</a>
-			<a class="contact" href="">Illinois</a>
-			<a class="contact" href="">Indiana</a>
-			<a class="contact" href="">Iowa</a>
-			<a class="contact" href="">Kansas</a>
-			<a class="contact" href="">Kentucky</a>
-			<a class="contact" href="">Louisiana</a>
-			<a class="contact" href="">Maine</a>
-			<a class="contact" href="">Maryland</a>
-			<a class="contact" href="">Massachusetts</a>
-			<a class="contact" href="">Michigan</a>
-			<a class="contact" href="">Minnesota</a>
-			<a class="contact" href="">Mississippi</a>
-			<a class="contact" href="">Missouri</a>
-			<a class="contact" href="">Montana</a>
-			<a class="contact" href="">Nebraska</a>
-			<a class="contact" href="">Nevada</a>
-			<a class="contact" href="">New Hampshire</a>
-			<a class="contact" href="">New Jersey</a>
-			<a class="contact" href="">New Mexico</a>
-			<a class="contact" href="">New York</a>
-			<a class="contact" href="">North Carolina</a>
-			<a class="contact" href="">North Dakota</a>
-			<a class="contact" href="">Ohio</a>
-			<a class="contact" href="">Oklahoma</a>
-			<a class="contact" href="">Oregon</a>
-			<a class="contact" href="">Pennsylvania</a>
-			<a class="contact" href="">Rhode Island</a>
-			<a class="contact" href="">South Carolina</a>
 			<a class="contact" href="">South Dakota</a>
 			<a class="contact" href="">Tennessee</a>
-			<a class="contact" href="">Texas</a>
-			<a class="contact" href="">Utah</a>
-			<a class="contact" href="">Vermont</a>
-			<a class="contact" href="">Virginia</a>
-			<a class="contact" href="">Washington</a>
 			<a class="contact" href="">West Virginia</a>
 			<a class="contact" href="">Wisconsin</a>
-			<a class="contact" href="">Wyoming</a>
+<div id="map"></div>
+<script>
+	  
+      function initMap() {
+		  var center_house = {lat:{{first1.y}} , lng:{{first1.x}}};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: center_house
+        });
+		{%for house in location%}
 
-					
-		</div><!--end of div main content-->
-		<div class="footer">
-			<hr>
-			BuyAHouse / buyahouse@gmail.com / © 2016 BuyAHouse. Proudly created by buyAHouse team
-		</div> <!--end of div footer-->
-		
-	</div> <!--end of div container-->
+		var cent={lat:{{house.y}},lng:{{house.x}}};
+        console.log(cent);
+		var marker = new google.maps.Marker({
+          position: cent,
+          map: map
+        });
+		{%endfor%}
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4vTHBephMsPZygX3N8FGMsaAAlx-GiJE&callback=initMap">
+    </script>
 	
 
-		
-	<script>
-		function myMap() {
-	  var mapOptions = {
-	    center: new google.maps.LatLng(40.7128,-74.0059),
-	    zoom:9,
-	    mapTypeId: google.maps.MapTypeId.ROADMAP
-	  };
-	  
-	  
-	  var map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
-
-google.maps.event.addListener(map, "bounds_changed",function(){
-	  		var bounds = map.getBounds();
-	  		var NE = bounds.getNorthEast();
-	  		var SW = bounds.getSouthWest();
-	  		var strHTML = "North East" + NE.lat() + "," +NE.lng()+ "</br>"
-	  		strHTML += "South West: " + SW.lat() + "," + SW.lng();
-	  		document.getElementById("info").innerHTML = strHTML;
-	  })
-	  
-
-	  var locations = [
-      ['Bondi Beach', -33.890542, 151.274856, 4],
-      ['Coogee Beach', -33.923036, 151.259052, 5],
-      ['Cronulla Beach', -34.028249, 151.157507, 3],
-      ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-      ['Maroubra Beach', -33.950198, 151.259302, 1]
-    ];
-
-	  var acOptions = {
-  		types: ['geocode']
-		};
-		var autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'),acOptions);
-		autocomplete.bindTo('bounds',map);
-
-		var marker = new google.maps.Marker({
-	  position: new google.maps.LatLng(40.7128,-74.0059),
-	  map: map,
-	  title: 'Newyork'
-	  });
-
-	 	 var marker, i;
-
-    for (i = 0; i < locations.length; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
-      });
-
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
-    }
-
-
-
-		var infoWindowOptions = {
-    	content: 'This could be your new house'
-		};
-
-		var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
-		google.maps.event.addListener(marker,'click',function(e){
-  
-  		infoWindow.open(map, marker);
-  		});
-
-  		google.maps.event.addListener(autocomplete, 'place_changed', function() {
-  		infoWindow.close();
-		  var place = autocomplete.getPlace();
-		  if (place.geometry.viewport) {
-		    map.fitBounds(place.geometry.viewport);
-		  } else {
-		    map.setCenter(place.geometry.location);
-		    map.setZoom(17);
-		  }
-		  marker.setPosition(place.geometry.location);
-		  infoWindow.setContent('<div><strong>' + place.name + '</strong><br>');
-		  infoWindow.open(map, marker);
-		  google.maps.event.addListener(marker,'click',function(e){
-
-		    infoWindow.open(map, marker);
-
-		  });
-});
-	  
-	  
-	}
-	</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?callback=myMap&libraries=places"></script>
-</body>
+	</body>
 </html>
